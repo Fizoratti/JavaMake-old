@@ -1,3 +1,7 @@
+#!/bin/sh
+SRC_PATH="./src/"
+OUT_PATH="./out/"
+
 all: run
 
 compile:
@@ -11,11 +15,11 @@ compile:
 
 		@echo "> Compiling..."
 		@echo "All source code"
-		@echo "From: [./src/] to: [./out/]"
+		@echo "From: [$(SRC_PATH)] to: [$(OUT_PATH)]"
 
-			javac ./src/*.java -d ./out/;
+			javac $(SRC_PATH)*.java -d $(OUT_PATH);
 		
-			wc -c ./out/*.class
+			wc -c $(OUT_PATH)*.class
 
 		@echo "DONE Compiled!"
 
@@ -26,7 +30,7 @@ compact:
 	@# Compact
 
 		@echo "> Compacting..."
-		jar -cvf ./out/App.jar ./out/*.class
+		jar -cvf $(OUT_PATH)App.jar $(OUT_PATH)*.class
 		@echo "DONE Compactated!"
 
 	@# ----------------------------------------
@@ -35,7 +39,7 @@ compact:
 test:
 	@# Test
 
-		jar tf ./out/App.jar
+		jar tf $(OUT_PATH)App.jar
 
 	@# ----------------------------------------
 	@echo "";
@@ -46,7 +50,7 @@ run: compile compact
 		@echo "> Starting..."
 		@echo "";
 			
-			java -cp ./out App
+			java -cp $(OUT_PATH) App
 
 	@# ----------------------------------------
 	@echo "";
@@ -55,8 +59,8 @@ clean:
 	@# Remove files
 
 		@echo "> Cleaning..."
-		@echo "All binary code from [./out/]"
-		@rm -f ./out/*.class ./out/*.jar 
+		@echo "All binary code from [$(OUT_PATH)]"
+		@rm -f $(OUT_PATH)*.class $(OUT_PATH)*.jar 
 		@echo "DONE Clean!"
 
 	@# ----------------------------------------
