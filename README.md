@@ -6,5 +6,5 @@
 
 ##### To run makefile on windows run
     
-    > ./make.bat
+    > .\make.bat
 
