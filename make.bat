@@ -1,3 +1,5 @@
+cd out; rmdir *.class; rmdir *.jar; cd ..
 javac .\src\*.java -d .\out\
 jar -cvf .\out\App.jar .\out\*.class
-java -cp .\out\ App
+cls
+@java -cp .\out\ App
