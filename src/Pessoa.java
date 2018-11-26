@@ -3,16 +3,26 @@ import java.util.List;
 
 public class Pessoa {
 
+    public enum Genero {
+        MASC, FEM
+    }
+
     public String nome;
     public int idade;
+    public Genero genero;
 
-    public Pessoa(String nome, int idade) {
+    public Pessoa(String nome, int idade, Genero genero) {
         this.nome = nome;
         this.idade = idade;
+        this.genero = genero;
     }
 
     public int getIdade() {
         return this.idade;
+    }
+
+    public genero getGenero() {
+        return this.genero;
     }
 
     public void printPessoa() {
