@@ -21,12 +21,12 @@ public class Pessoa {
         return this.idade;
     }
 
-    public genero getGenero() {
+    public Genero getGenero() {
         return this.genero;
     }
 
     public void printPessoa() {
-        System.out.println(nome + ", " + idade);
+        System.out.println(nome + ", " + idade + ", " + genero);
     }
 
     public static void printPessoas(List<Pessoa> lista, Predicate<Pessoa> tester) {
