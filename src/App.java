@@ -32,5 +32,14 @@ public class App {
         System.out.println("\n#####\n# Print all MASC people over 18:");
         Pessoa.printPessoas(pessoas, (Pessoa p) -> p.getIdade() >= 18 && p.getGenero() == Pessoa.Genero.MASC);
 
+        System.out.println("\n#####\n# Print the avg age from all MASC people:");
+        double idadeAvg = pessoas.stream().filter(p -> p.getGenero() == Pessoa.Genero.MASC).mapToInt(Pessoa::getIdade)
+                .average().getAsDouble();
+        System.out.println("Average: " + idadeAvg);
+
+        System.out.println("\n#####\n# Print how many people are over 18:");
+        long num = pessoas.stream().filter(p -> p.getIdade() > 18).count();
+        System.out.println("Count: " + num);
+
     }
 }
