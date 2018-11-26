@@ -1,3 +1,5 @@
+import java.util.function.Predicate;
+
 public class Pessoa {
 
     public String nome;
@@ -16,4 +18,11 @@ public class Pessoa {
         System.out.println(nome + ", " + idade);
     }
 
+    public static void printPessoas(List<Pessoa> lista, Predicate<Pessoa> tester) {
+        for (Pessoa p : lista) {
+            if (tester.test(p)) {
+                p.printPessoa();
+            }
+        }
+    }
 }
