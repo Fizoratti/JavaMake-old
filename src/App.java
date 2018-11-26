@@ -22,7 +22,14 @@ public class App {
         pessoas.add(new Pessoa("Elon", 46, Pessoa.Genero.MASC));
         pessoas.add(new Pessoa("Bianca", 20, Pessoa.Genero.FEM));
 
-        Pessoa.printPessoas(pessoas, p -> p.getIdade() >= 18 && p.getGenero() == Pessoa.Genero.MASC);
+        System.out.println("\n#####\n# Print all people:");
+        Pessoa.printPessoas(pessoas, (Pessoa p) -> true);
+
+        System.out.println("\n#####\n# Print all people over 18:");
+        Pessoa.printPessoas(pessoas, (Pessoa p) -> p.getIdade() >= 18);
+
+        System.out.println("\n#####\n# Print all MASC people over 18:");
+        Pessoa.printPessoas(pessoas, (Pessoa p) -> p.getIdade() >= 18 && p.getGenero() == Pessoa.Genero.MASC);
 
     }
 }
