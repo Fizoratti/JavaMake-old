@@ -18,9 +18,9 @@ public class App {
          */
 
         List<Pessoa> pessoas = new ArrayList<>();
-        pessoas.add(new Pessoa("Felipe", 23));
+        pessoas.add(new Pessoa("Felipe", 23, Pessoa.Genero.MASC));
 
-        Pessoa.printPessoas(pessoas, (Pessoa p) -> p.getIdade() >= 18);
+        Pessoa.printPessoas(pessoas, p -> p.getIdade() >= 18 && p.getGenero() == Pessoa.Genero.MASC);
 
     }
 }
