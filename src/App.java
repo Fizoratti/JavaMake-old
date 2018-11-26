@@ -1,17 +1,26 @@
+import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.List;
 
 public class App {
     public static void main(String args[]) {
-        Message message = new Message("Hello World!");
-        System.out.println(message.getMessage());
+        /*
+         * Message message = new Message("Hello World!");
+         * System.out.println(message.getMessage());
+         * 
+         * Scanner ler = new Scanner(System.in);
+         * 
+         * String texto = ler.next();
+         * 
+         * ler.close();
+         * 
+         * System.out.println(texto);
+         */
 
-        Scanner ler = new Scanner(System.in);
+        List<Pessoa> pessoas = new ArrayList<>();
+        pessoas.add(new Pessoa("Felipe", 23));
 
-        String texto = ler.next();
-
-        ler.close();
-
-        System.out.println(texto);
+        Pessoa.printPessoas(pessoas, (Pessoa p) -> p.getIdade() >= 18);
 
     }
 }
