@@ -21,6 +21,7 @@ public class App {
         pessoas.add(new Pessoa("Felipe", 23, Pessoa.Genero.MASC));
         pessoas.add(new Pessoa("Elon", 46, Pessoa.Genero.MASC));
         pessoas.add(new Pessoa("Bianca", 20, Pessoa.Genero.FEM));
+        pessoas.add(new Pessoa("Fernanda", 8, Pessoa.Genero.FEM));
 
         System.out.println("\n#####\n# Print all people:");
         Pessoa.printPessoas(pessoas, (Pessoa p) -> true);
