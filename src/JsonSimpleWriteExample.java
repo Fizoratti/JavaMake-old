@@ -25,13 +25,6 @@ public class JsonSimpleWriteExample {
         lista.add(new Pessoa("Madalena", 2, Pessoa.Genero.FEM));
         lista.add(new Pessoa("Moisés", 6, Pessoa.Genero.MASC));
 
-        // JSONArray list = new JSONArray();
-        // list.add("msg 1");
-        // list.add("msg 2");
-        // list.add("msg 3");
-
-        // obj.put("messages", list);
-
         try (FileWriter file = new FileWriter("Pessoas.json")) {
             JSONObject tabela = new JSONObject();
             JSONArray pessoas = new JSONArray();
@@ -46,47 +39,23 @@ public class JsonSimpleWriteExample {
             System.err.format("Erro de E/S: %s%n", e);
         }
 
-        // JSONParser parser = new JSONParser();
-        // Reader reader = new FileReader("Pessoas.json");
-
-        // Object jsonObj = parser.parse(reader);
-
-        // JSONObject jsonObject = (JSONObject) jsonObj;
-
-        // String name = (String) jsonObject.get("name");
-        // System.out.println("Name = " + name);
-
-        // long age = (Long) jsonObject.get("age");
-        // System.out.println("Age = " + age);
-
-        // JSONArray cities = (JSONArray) jsonObject.get("cities");
-
-        // @SuppressWarnings("unchecked")
-        // Iterator<String> it = cities.iterator();
-        // while (it.hasNext()) {
-        // System.out.println("City = " + it.next());
-        // }
-        // reader.close();
-
         Path path1 = Paths.get("Pessoas.json");
         try (BufferedReader reader = Files.newBufferedReader(path1, Charset.defaultCharset())) {
 
             JSONParser parser = new JSONParser();
             Object obj = parser.parse(reader);
             JSONObject tabela = (JSONObject) obj;
-
             JSONArray pessoas = (JSONArray) tabela.get("Pessoas");
-            System.out.println(pessoas.toJSONString());
-            if (pessoas == null)
-                System.out.println("É Null");
 
-            System.out.println("Tamanho de Pessoas: " + pessoas.size());
+            // System.out.println(pessoas.toJSONString());
+            // System.out.println("Tamanho de Pessoas: " + pessoas.size());
 
             @SuppressWarnings("unchecked")
             Iterator<JSONObject> it = pessoas.iterator();
             while (it.hasNext()) {
-                System.out.println("City = " + it.next());
+                System.out.println("pessoa: " + it.next());
             }
+
             reader.close();
 
         } catch (ParseException e) {
@@ -96,18 +65,6 @@ public class JsonSimpleWriteExample {
         } catch (Exception e) {
             System.err.format("Erro de E/S: %s%n", e);
         }
-
-        // -------------------------------
-
-        // Path path1 = Paths.get("teste2.csv");
-        // try (PrintWriter writer = new PrintWriter(Files.newBufferedWriter(path1,
-        // Charset.defaultCharset()))) {
-        // for (Pessoa p : lista) {
-        // writer.println(p.getNome() + ";" + p.getIdade() + ";" + p.getGenero());
-        // }
-        // } catch (IOException e) {
-        // System.err.format("Erro de E/S: %s%n", e);
-        // }
 
     }
 
