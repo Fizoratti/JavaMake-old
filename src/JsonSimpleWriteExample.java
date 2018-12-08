@@ -17,13 +17,7 @@ public class JsonSimpleWriteExample {
 
     public static void main(String[] args) {
 
-        ArrayList<Pessoa> lista = new ArrayList<>();
-        lista.add(new Pessoa("Jose", 12, Pessoa.Genero.MASC));
-        lista.add(new Pessoa("Maria", 14, Pessoa.Genero.FEM));
-        lista.add(new Pessoa("Jesus", 1, Pessoa.Genero.MASC));
-        lista.add(new Pessoa("Judas", 2, Pessoa.Genero.MASC));
-        lista.add(new Pessoa("Madalena", 2, Pessoa.Genero.FEM));
-        lista.add(new Pessoa("Moisés", 6, Pessoa.Genero.MASC));
+        ArrayList<Pessoa> lista = Pessoas.getInstance().getLista();
 
         try (FileWriter file = new FileWriter("Pessoas.json")) {
             JSONObject tabela = new JSONObject();
