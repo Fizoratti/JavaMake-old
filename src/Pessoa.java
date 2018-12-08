@@ -17,6 +17,10 @@ public class Pessoa {
         this.genero = genero;
     }
 
+    public String getNome() {
+        return this.nome;
+    }
+
     public int getIdade() {
         return this.idade;
     }
