@@ -37,7 +37,7 @@ public class Pessoa {
         JSONObject pessoa = new JSONObject();
         pessoa.put("nome", getNome());
         pessoa.put("idade", getIdade());
-        pessoa.put("genero", getGenero());
+        pessoa.put("genero", getGenero().toString());
         return pessoa;
     }
 
