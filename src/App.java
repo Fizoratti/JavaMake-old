@@ -5,16 +5,15 @@ import java.util.List;
 public class App {
     public static void main(String args[]) {
 
-        Message message = new Message("Hello World!");
-        System.out.println(message.getMessage());
+        CadastroFuncionario cf = new CadastroFuncionario();
 
-        Scanner ler = new Scanner(System.in);
+        cf.add(new Funcionario("Felipe", "Bolsista"));
+        cf.add(new Funcionario("Matheus", "Bolsista"));
+        cf.add(new Funcionario("Gabriel", "Bolsista"));
+        cf.add(new Funcionario("Darlan", "Mestrando"));
 
-        String texto = ler.next();
+        cf.exibeTodos();
 
-        ler.close();
-
-        System.out.println(texto);
-
+        cf.exibeTotalPorCargo();
     }
 }

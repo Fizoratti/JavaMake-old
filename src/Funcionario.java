@@ -14,4 +14,9 @@ public class Funcionario {
     public String getCargo() {
         return this.cargo;
     }
+
+    @Override
+    public String toString() {
+        return this.nome + ", " + this.cargo;
+    }
 }
