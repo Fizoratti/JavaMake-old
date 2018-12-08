@@ -1,6 +1,16 @@
 #!/bin/sh
+
+# Paths
 SRC_PATH="./src/"
 OUT_PATH="./out/"
+LIB_PATH="./lib/"
+
+# Library files
+LIB1="json-simple-1.1.jar"
+
+# Main Files
+JAR_FILE="App.jar"                 # Final Jar name
+MAIN_CLASS="JsonSimpleWriteExample" # Class with method main()
 
 all: run
 
@@ -17,7 +27,7 @@ compile:
 		@echo "All source code"
 		@echo "From: [$(SRC_PATH)] to: [$(OUT_PATH)]"
 
-			javac $(SRC_PATH)*.java -d $(OUT_PATH);
+			javac -classpath $(LIB_PATH)$(LIB1) $(SRC_PATH)*.java -d $(OUT_PATH);
 		
 			wc -c $(OUT_PATH)*.class
 
@@ -30,7 +40,9 @@ compact:
 	@# Compact
 
 		@echo "> Compacting..."
-		jar -cvf $(OUT_PATH)App.jar $(OUT_PATH)*.class
+
+			jar -cvf $(OUT_PATH)$(JAR_FILE) $(OUT_PATH)*.class
+
 		@echo "DONE Compactated!"
 
 	@# ----------------------------------------
@@ -39,7 +51,7 @@ compact:
 test:
 	@# Test
 
-		jar tf $(OUT_PATH)App.jar
+		jar tf $(OUT_PATH)$(JAR_FILE)
 
 	@# ----------------------------------------
 	@echo "";
@@ -50,7 +62,7 @@ run: compile compact
 		@echo "> Starting..."
 		@echo "";
 			
-			java -cp $(OUT_PATH) App
+			java -cp $(OUT_PATH) $(MAIN_CLASS)
 
 	@# ----------------------------------------
 	@echo "";
@@ -60,7 +72,9 @@ clean:
 
 		@echo "> Cleaning..."
 		@echo "All binary code from [$(OUT_PATH)]"
-		@rm -f $(OUT_PATH)*.class $(OUT_PATH)*.jar 
+
+			@rm -f $(OUT_PATH)*.class $(OUT_PATH)*.jar 
+			
 		@echo "DONE Clean!"
 
 	@# ----------------------------------------
