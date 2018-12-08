@@ -33,6 +33,14 @@ public class Pessoa {
         System.out.println(nome + ", " + idade + ", " + genero);
     }
 
+    public JSONObject toJSON() {
+        JSONObject pessoa = new JSONObject();
+        pessoa.put("nome", getNome());
+        pessoa.put("idade", getIdade());
+        pessoa.put("genero", getGenero());
+        return pessoa;
+    }
+
     public static void printPessoas(List<Pessoa> lista, Predicate<Pessoa> tester) {
         for (Pessoa p : lista) {
             if (tester.test(p)) {
