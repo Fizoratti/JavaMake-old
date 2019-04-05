@@ -2,6 +2,10 @@
 SRC_PATH="./src/"
 OUT_PATH="./out/"
 
+GREEN=\033[1;32m
+GREY=\033[1;30m
+NC=\033[0m # No Color
+
 all: run
 
 compile:
@@ -13,7 +17,7 @@ compile:
 	
 	@# Compile --------------------------------
 
-		@echo "> Compiling..."
+		@echo "${GREY}> Compiling...${NC}"
 		@echo "All source code"
 		@echo "From: [$(SRC_PATH)] to: [$(OUT_PATH)]"
 
@@ -21,7 +25,7 @@ compile:
 		
 			wc -c $(OUT_PATH)*.class
 
-		@echo "DONE Compiled!"
+		@echo "${GREEN}DONE Compiled!${NC}"
 
 	@# ----------------------------------------
 	@echo "";
@@ -29,9 +33,9 @@ compile:
 compact: 
 	@# Compact
 
-		@echo "> Compacting..."
+		@echo "${GREY}> Compacting...${NC}"
 		jar -cvf $(OUT_PATH)App.jar $(OUT_PATH)*.class
-		@echo "DONE Compactated!"
+		@echo "${GREEN}DONE Compactated!${NC}"
 
 	@# ----------------------------------------
 	@echo "";
@@ -44,13 +48,13 @@ test:
 	@# ----------------------------------------
 	@echo "";
 
-run: compile compact
+run: clean compile compact
 	@# Run
 
-		@echo "> Starting..."
+		@echo "${GREY}> Starting...${NC}"
 		@echo "";
 			
-			java -cp $(OUT_PATH) App
+			@java -cp $(OUT_PATH) App
 
 	@# ----------------------------------------
 	@echo "";
@@ -58,10 +62,10 @@ run: compile compact
 clean:
 	@# Remove files
 
-		@echo "> Cleaning..."
+		@echo "${GREY}> Cleaning...${NC}"
 		@echo "All binary code from [$(OUT_PATH)]"
 		@rm -f $(OUT_PATH)*.class $(OUT_PATH)*.jar 
-		@echo "DONE Clean!"
+		@echo "${GREEN}DONE Clean!${NC}"
 
 	@# ----------------------------------------
 	@echo "";
